@@ -1,0 +1,44 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+</ion-header>
+
+<ion-content padding class="home-background-flat">
+    <div class="container">
+        <div class="forecast">
+            <!-- <ion-icon text-center name="pin" class="main-logo"></ion-icon>
+            <p>
+                La beaute a portee
+            </p>
+        -->
+            <img src="./assets/icon/favicon.ico" class="main-logo" />
+        </div>
+        <div style="width:100%">
+              <ion-item class="transparent rounded">
+                <ion-input class="" type="text" placeholder="Email" [(ngModel)]="username" ></ion-input>
+              </ion-item>
+
+              <ion-item class="transparent rounded">
+                <ion-input class=""  type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+              </ion-item>
+              <button ion-button color="light" (click)="login()">Login</button>
+              <button ion-button color="dark" (click)="confirmPassword()">Register</button>
+        </div>
+        <div style="width:100%">
+            <button ion-button color="light" class="facebook"  icon-start full>
+                <ion-icon name="logo-facebook"></ion-icon>
+                Login with Facebook
+            </button>
+            <button ion-button color="light" class="google" icon-start full>
+                <ion-icon name="logo-google"></ion-icon>
+                Login with Google
+            </button>
+        </div>
+
+    </div>
+
+</ion-content>

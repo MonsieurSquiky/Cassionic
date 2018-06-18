@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ajouter une formule </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="container" style="color:black">
+        <ion-list>
+
+          <ion-item>
+            <ion-label floating>Id de la formule </ion-label>
+            <ion-input [(ngModel)]='idFormule' type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Description </ion-label>
+            <ion-input [(ngModel)]='description' type="text"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label floating> Prix (en euros)</ion-label>
+            <ion-input [(ngModel)]='prix' type="text"></ion-input>
+          </ion-item>
+
+
+        </ion-list>
+
+        <div padding>
+          <button ion-button (click)=saveFormule()> Ajouter la formule </button>
+        </div>
+    </div>
+</ion-content>

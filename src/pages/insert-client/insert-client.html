@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Insérer un client </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="container" style="color:black">
+        <ion-list>
+
+          <ion-item>
+            <ion-label floating>Nom </ion-label>
+            <ion-input  [(ngModel)]='nom' type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Prénom </ion-label>
+            <ion-input  [(ngModel)]='prenom' type="text"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label floating> Siret</ion-label>
+            <ion-input  [(ngModel)]='siret' type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating> Adresse </ion-label>
+            <ion-input  [(ngModel)]='adresse' type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating> Contact </ion-label>
+            <ion-input  [(ngModel)]='contact' type="text"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label floating> Nombre d'employé </ion-label>
+            <ion-input  [(ngModel)]='nbEmploye' type="number"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+        <div padding>
+          <button ion-button (click)='saveClient()' > Ajouter un client </button>
+        </div>
+    </div>
+</ion-content>

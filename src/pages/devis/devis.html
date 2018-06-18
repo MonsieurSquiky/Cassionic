@@ -1,0 +1,60 @@
+<!--
+  Generated template for the DevisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Devis</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="https://noink.abs-cbn.com/HTML/no-profile-pic.png">
+      </ion-avatar>
+      <div class="item-main-content">
+          <h2 >{{ client.prenom }} {{ client.nom | uppercase}}</h2>
+          <p>{{ client.adresse }} <br />
+          {{ client.siret }} - {{ client.contact }}</p>
+      </div>
+
+    </ion-item>
+
+    <ion-row>
+        <ion-col col-12  class="close-subtitles subtitles">
+            <ion-item no-padding>
+              <ion-label>Formule :</ion-label>
+              <ion-select [(ngModel)]="formulePrix" >
+                  <ion-option value="{{formule.prix}}" *ngFor="let formule of flist;let i=index">{{formule.description}}</ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-7 class="close-subtitles subtitle">
+            <p>
+                Quantite:
+            </p>
+        </ion-col>
+        <ion-col class="subtitle close-subtitles right-align" col-5>
+            <ion-item no-margin>
+              <ion-input no-margin [(ngModel)]="qte" type="number" min=1 value=1 placeholder="Quantite"></ion-input>
+            </ion-item>
+        </ion-col>
+
+    </ion-row>
+
+    <p>
+        Prix unitaire : {{ formulePrix ? formulePrix : "Aucune formule"}} <br />
+        Prix totale : {{ formulePrix ? formulePrix*qte : "Aucune formule" }}
+    </p>
+    <button ion-button block disabled="true"> Générer PDF </button>
+</ion-content>

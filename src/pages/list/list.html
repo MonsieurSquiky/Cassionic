@@ -3,21 +3,25 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Les Clients</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+<ion-content class="background-cloud">
+    <ion-card *ngFor=" let client of results" (click)="check(client)">
+        <ion-card-content class="no-padding">
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="https://noink.abs-cbn.com/HTML/no-profile-pic.png">
+              </ion-avatar>
+              <div class="item-main-content">
+                  <h2 >{{ client.prenom }} {{ client.nom | uppercase}}</h2>
+                  <p> {{ client.adresse }}</p>
+              </div>
+
+            </ion-item>
+
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
