@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "624772452087",
+    "firebase_url": "https://cassionic-tsp.firebaseio.com",
+    "project_id": "cassionic-tsp",
+    "storage_bucket": "cassionic-tsp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624772452087:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3yES4F-QRZ044xRBRoFIiPBfLfBrTiww"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

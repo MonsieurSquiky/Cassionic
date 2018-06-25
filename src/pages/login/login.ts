@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import firebase from 'firebase';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook'
+
+
 
 import { HomePage } from '../home/home';
 
@@ -21,6 +25,8 @@ export class LoginPage {
                 public alertCtrl: AlertController,
                 private afAuth: AngularFireAuth,
                 private fdb: AngularFireDatabase,
+                public facebook: Facebook,
+                private googlePlus: GooglePlus,
                 public menu: MenuController) {
 
       this.menu.enable(false);
@@ -47,7 +53,7 @@ export class LoginPage {
             }
         });
   }
-/*
+
   facebookLogin(): Promise<any> {
     const obj = this;
     return this.facebook.login(['email'])
@@ -78,7 +84,7 @@ export class LoginPage {
   googleLogin(): void {
       const obj = this;
       this.googlePlus.login({
-        'webClientId': '624687797142-unv7d8omkn2kd36q2ib6pdhuak1rspeu.apps.googleusercontent.com',
+        'webClientId': '624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com',
         'offline': true
       }).then( res => {
               const googleCredential = firebase.auth.GoogleAuthProvider
@@ -95,7 +101,7 @@ export class LoginPage {
           console.log(err.toString());
       });
     }
-*/
+
   confirmPassword() {
     let prompt = this.alertCtrl.create({
       title: 'Confirmation de votre mot de passe',
