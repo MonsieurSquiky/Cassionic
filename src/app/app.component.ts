@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { InsertClientPage } from '../pages/insert-client/insert-client';
 import { InsertFormulePage } from '../pages/insert-formule/insert-formule';
+import { LogoutPage } from '../pages/logout/logout';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,7 +27,8 @@ export class MyApp {
     this.pages = [
       { title: 'Rechercher client', component: HomePage },
       { title: 'Ajouter Client', component: InsertClientPage },
-      { title: 'Ajouter Formule', component: InsertFormulePage }
+      { title: 'Ajouter Formule', component: InsertFormulePage },
+      { title: 'Deconnexion', component: LogoutPage }
     ];
 
   }

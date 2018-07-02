@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 import firebase from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook } from '@ionic-native/facebook'
+import { Oauth2Provider } from '../../providers/oauth2/oauth2';
 
 
 
@@ -27,7 +28,8 @@ export class LoginPage {
                 private fdb: AngularFireDatabase,
                 public facebook: Facebook,
                 private googlePlus: GooglePlus,
-                public menu: MenuController) {
+                public menu: MenuController,
+                public oauth2: Oauth2Provider) {
 
       this.menu.enable(false);
   }
@@ -38,13 +40,7 @@ export class LoginPage {
             if (user) {
               // User is signed in.
               obj.uid = user.uid;
-              /*
-              firebase.auth().currentUser.getIdToken().then(function(token) {
-                  console.log(token);
-              }); */
 
-
-                  console.debug('Provider HERE !!' + user.providerData[0].providerId);
                   obj.goDashboard();
 
             } else {
@@ -52,6 +48,20 @@ export class LoginPage {
               console.log("No user signed");
             }
         });
+  }
+
+  customLogin() {
+      let logging = this.oauth2.login(this.username, this.password);
+      if (logging)
+        this.goDashboard();
+      else {
+          let alertVerification = this.alertCtrl.create({
+            title: "Erreur",
+            subTitle: "Une erreur est survenue, veuillez vérifier vos logins et réessayer ultérieurement.",
+            buttons: ['OK']
+          });
+          alertVerification.present();
+      }
   }
 
   facebookLogin(): Promise<any> {
@@ -67,17 +77,13 @@ export class LoginPage {
             console.log("Firebase success: " + JSON.stringify(success));
             obj.goDashboard();
           }).catch((err) => {
-              console.log('Error normally detected');
               console.log(JSON.stringify(err));
-              console.debug("Error: ", err);
-              console.log(err.toString());
           });
 
       }).catch((err) => {
-          console.log('Error normally detected');
+
           console.log(JSON.stringify(err));
-          console.debug("Error: ", err);
-          console.log(err.toString());
+
       });
   }
 

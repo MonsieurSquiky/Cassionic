@@ -56,5 +56,5 @@
         Prix unitaire : {{ formulePrix ? formulePrix : "Aucune formule"}} <br />
         Prix totale : {{ formulePrix ? formulePrix*qte : "Aucune formule" }}
     </p>
-    <button ion-button block disabled="true"> Générer PDF </button>
+    <button ion-button block disabled="true" (click)="callPDFservice()" > Générer PDF </button>
 </ion-content>

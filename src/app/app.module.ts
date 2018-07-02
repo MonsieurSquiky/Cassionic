@@ -13,12 +13,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
 import { DevisPage } from '../pages/devis/devis';
 import { InsertClientPage } from '../pages/insert-client/insert-client';
 import { InsertFormulePage } from '../pages/insert-formule/insert-formule';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpModule } from '@angular/http';
+import { Oauth2Provider } from '../providers/oauth2/oauth2';
 
 var config = {
   apiKey: "AIzaSyBNSbGf01wK7m6nhkVCW3lup-ralKSMCow",
@@ -35,12 +38,14 @@ var config = {
     HomePage,
     ListPage,
     LoginPage,
+    LogoutPage,
     InsertClientPage,
     InsertFormulePage,
     DevisPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
 
     AngularFireModule.initializeApp(config),
@@ -55,6 +60,7 @@ var config = {
     HomePage,
     ListPage,
     LoginPage,
+    LogoutPage,
     InsertClientPage,
     InsertFormulePage,
     DevisPage
@@ -64,7 +70,8 @@ var config = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GooglePlus,
-    Facebook
+    Facebook,
+    Oauth2Provider
   ]
 })
 export class AppModule {}
