@@ -8,16 +8,56 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:624772452087:android:4ae6ea91a4771d79",
+        "android_client_info": {
+          "package_name": "io.ionic.cassionic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624772452087-85ijumu41dg0ffg9aj9mt40lu90eq44l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.cassionic",
+            "certificate_hash": "562c55238ba368e1ff1bd8ee017f77ffde54c6a4"
+          }
+        },
+        {
+          "client_id": "624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3yES4F-QRZ044xRBRoFIiPBfLfBrTiww"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:624772452087:android:764d2cb7da3280eb",
         "android_client_info": {
           "package_name": "io.ionic.starter"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com",
-          "client_type": 3
-        },
         {
           "client_id": "624772452087-k1r34harvlt9uv7kt2ggg57a3g1faro9.apps.googleusercontent.com",
           "client_type": 3
