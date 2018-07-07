@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Headers, RequestOptions } from '@angular/http';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Oauth2Provider } from '../../providers/oauth2/oauth2';
 /**
  * Generated class for the DevisPage page.
  *
@@ -19,13 +20,14 @@ import 'rxjs/add/operator/map';
 })
 export class DevisPage {
     client;
-    formulePrix;
+    formuleId;
     flist = [];
     qte;
     uid;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, public http: Http,
+  public oauth2: Oauth2Provider) {
       this.client = navParams.get('client');
   }
 
@@ -51,18 +53,16 @@ export class DevisPage {
           });
 
         } else {
-          // No user is signed in.
-          console.log("No user signed");
+            if (obj.oauth2.isOAuthUsed) {
+                // on est connecté via oauth2
+                // on appelle le bon microservice crud via oauth2.callMicroserviceGet(urlCrud)
+            }
         }
     });
   }
 
-  callPDFservice() {
-      let headers = new Headers({ 'Content-Type': 'application/json' });
-      let options = new RequestOptions({ headers: headers });
-      this.http.post('url', { 'datas':42 }, options).map(res => res.json()).subscribe(data => {
-            //this.posts = data.data.children;
-        });
+  async callPDFservice() {
+      let pdf = await this.oauth2.callPDFservice(this.client.id, this.formuleId);
   }
 
 }

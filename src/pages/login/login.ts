@@ -44,6 +44,10 @@ export class LoginPage {
                   obj.goDashboard();
 
             } else {
+                if (obj.oauth2.isOAuthUsed) {
+                    // on est connecté via oauth2
+                    obj.goDashboard();
+                }
               // No user is signed in.
               console.log("No user signed");
             }
@@ -51,17 +55,8 @@ export class LoginPage {
   }
 
   customLogin() {
-      let logging = this.oauth2.login(this.username, this.password);
-      if (logging)
-        this.goDashboard();
-      else {
-          let alertVerification = this.alertCtrl.create({
-            title: "Erreur",
-            subTitle: "Une erreur est survenue, veuillez vérifier vos logins et réessayer ultérieurement.",
-            buttons: ['OK']
-          });
-          alertVerification.present();
-      }
+      this.oauth2.login(this.username, this.password, this);
+
   }
 
   facebookLogin(): Promise<any> {
@@ -75,6 +70,9 @@ export class LoginPage {
         firebase.auth().signInWithCredential(facebookCredential)
           .then( success => {
             console.log("Firebase success: " + JSON.stringify(success));
+            firebase.auth().currentUser.getIdToken().then(function(token) {
+              obj.oauth2.setToken(token);
+          });
             obj.goDashboard();
           }).catch((err) => {
               console.log(JSON.stringify(err));
@@ -98,7 +96,10 @@ export class LoginPage {
 
               firebase.auth().signInWithCredential(googleCredential)
             .then( response => {
-                console.log("Firebase success: " + JSON.stringify(response));
+                firebase.auth().currentUser.getIdToken().then(function(token) {
+                  obj.oauth2.setToken(token);
+              });
+
                 obj.goDashboard();
             });
       }, err => {
@@ -151,11 +152,14 @@ export class LoginPage {
 
 
   async login() {
+      const obj = this;
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(this.username, this.password);
       if (result) {
-
-            this.goDashboard();
+          firebase.auth().currentUser.getIdToken().then(function(token) {
+            obj.oauth2.setToken(token);
+          });
+          this.goDashboard();
 
 
       }
@@ -180,28 +184,10 @@ export class LoginPage {
       );
       if (result) {
           const obj = this;
-          //firebase.auth().currentUser.sendEmailVerification().then(function() {
-              /*
-            // Verification email sent.
-            firebase.auth().signOut();
-
-            let alertVerification = obj.alertCtrl.create({
-              title: "Mail de vérification envoyé",
-              subTitle: "Un email vient de vous être envoyé. Cliquer sur le lien qui y figure pour activer votre compte puis connectez vous.",
-              buttons: ['OK']
-            });
-            alertVerification.present();
-          })
-          .catch(function(error) {
-            // Error occurred. Inspect error.code.
-            let alertVerification = obj.alertCtrl.create({
-              title: "Echec",
-              subTitle: "Une erreur est survenue, veuillez vérifier votre connexion internet et réessayer ultérieurement.",
-              buttons: ['OK']
-            });
-            alertVerification.present();
-            */
-            obj.goDashboard();
+          firebase.auth().currentUser.getIdToken().then(function(token) {
+            obj.oauth2.setToken(token);
+          });
+          obj.goDashboard();
           //});
 
 

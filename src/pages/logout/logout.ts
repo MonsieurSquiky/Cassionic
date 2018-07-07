@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import firebase from 'firebase';
-
+import { Oauth2Provider } from '../../providers/oauth2/oauth2';
 /**
  * Generated class for the LogoutPage page.
  *
@@ -17,7 +17,8 @@ import firebase from 'firebase';
 })
 export class LogoutPage {
 
-  constructor(public loadingCtrl:LoadingController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public loadingCtrl:LoadingController, public navCtrl: NavController, public navParams: NavParams,
+  public oauth2: Oauth2Provider) {
 
   }
 
@@ -47,6 +48,12 @@ export class LogoutPage {
                 obj.goHome();
           });
 
+    }
+    else {
+        if (obj.oauth2.isOAuthUsed) {
+            // on est connecté via oauth2
+            obj.oauth2.logout();
+        }
     }
   }
 

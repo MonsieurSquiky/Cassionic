@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import firebase from 'firebase';
+import { Oauth2Provider } from '../../providers/oauth2/oauth2';
 
 /**
  * Generated class for the InsertFormulePage page.
@@ -23,7 +24,8 @@ export class InsertFormulePage {
     prix;
     uid;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb : AngularFireDatabase, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb : AngularFireDatabase, public alertCtrl: AlertController,
+  public oauth2: Oauth2Provider) {
   }
 
   ionViewDidLoad() {
@@ -34,8 +36,10 @@ export class InsertFormulePage {
             obj.uid = user.uid;
 
           } else {
-            // No user is signed in.
-            console.log("No user signed");
+              if (obj.oauth2.isOAuthUsed) {
+                  // on est connecté via oauth2
+                  // on appelle le bon microservice crud via oauth2.callMicroserviceGet(urlCrud)
+              }
           }
       });
     console.log('ionViewDidLoad InsertFormulePage');

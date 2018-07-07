@@ -30,8 +30,8 @@
         <ion-col col-12  class="close-subtitles subtitles">
             <ion-item no-padding>
               <ion-label>Formule :</ion-label>
-              <ion-select [(ngModel)]="formulePrix" >
-                  <ion-option value="{{formule.prix}}" *ngFor="let formule of flist;let i=index">{{formule.description}}</ion-option>
+              <ion-select [(ngModel)]="formuleId" >
+                  <ion-option value="{{formule.id}}" *ngFor="let formule of flist;let i=index">{{formule.description}}</ion-option>
               </ion-select>
             </ion-item>
         </ion-col>

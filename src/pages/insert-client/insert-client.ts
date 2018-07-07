@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import firebase from 'firebase';
 
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Oauth2Provider } from '../../providers/oauth2/oauth2';
 /**
  * Generated class for the InsertClientPage page.
  *
@@ -23,7 +24,8 @@ export class InsertClientPage {
     adresse;
     contact;
     nbEmploye;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb : AngularFireDatabase, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb : AngularFireDatabase, public alertCtrl: AlertController,
+  public oauth2: Oauth2Provider) {
 
   }
 
@@ -36,8 +38,10 @@ export class InsertClientPage {
           obj.uid = user.uid;
 
         } else {
-          // No user is signed in.
-          console.log("No user signed");
+            if (obj.oauth2.isOAuthUsed) {
+                // on est connecté via oauth2
+                // on appelle le bon microservice crud via oauth2.callMicroserviceGet(urlCrud)
+            }
         }
     });
   }
